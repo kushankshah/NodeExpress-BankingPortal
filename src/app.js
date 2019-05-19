@@ -4,7 +4,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
-const { account, users, writeJson } = require('./data');
+const { account, users, writeJSON } = require('./data');
 
 app.set('views', path.join(__dirname,'views'));
 app.set('view engine','ejs');
@@ -29,7 +29,7 @@ app.get('/', (req, res) => res.render('index', {title: 'Account Summary', accoun
 app.get('/transfer', (req, res) => res.render('transfer'));
 
 app.post('/transfer', (req, res) => {
-    writeJson();
+    writeJSON();
     res.render('transfer', {message: 'Transfer Completed'});
 });
 
@@ -38,7 +38,7 @@ app.get('/payment', (req, res) => res.render('payment', { account: accounts.cred
 app.post('/payment', (req, res) => {
     accounts.credit.balance -= req.body.amount;
     accounts.credit.available += parseInt(req.body.amount, 10);
-    writeJson();
+    writeJSON();
     res.render('payment', {message: 'Payment Completed'});
 });
 
