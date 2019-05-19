@@ -4,7 +4,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
-const { account, users, writeJSON } = require('./data');
+const { accounts, users, writeJSON } = require('./data');
 
 app.set('views', path.join(__dirname,'views'));
 app.set('view engine','ejs');
